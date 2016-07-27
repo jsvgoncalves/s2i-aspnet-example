@@ -2,8 +2,26 @@
 
 set -e
 
+echo "---> Installling frontend dependencies ..."
+
+if [[ -f package.json ]]; then
+  echo "---> Installing NPM dependencies ..."
+  npm install
+elif [[ -f app/package.json ]]; then
+  echo "---> Installing NPM dependencies ..."
+  npm install
+fi
+
+if [[ -f bower.json ]]; then
+  echo "---> Installing Bower dependencies ..."
+  bower install
+elif [[ -f app/bower.json ]]; then
+  echo "---> Installing Bower dependencies ..."
+  bower install
+fi
+
 echo "---> Running data migration..."
 dotnet ef database update
 
 echo "---> Running application ..."
-dotnet run
+dotnet run -p ${HOME}/project.json
