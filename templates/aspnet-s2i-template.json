@@ -5,7 +5,8 @@
         "name": "aspnet-s2i",
         "annotations": {
             "description": "Application template for asp .NET applications",
-            "tags": "instant-app,aspnet,asp"
+            "tags": "quickstart,dotnet,.net",
+            "iconClass": "fa fa-code"
         }
     },
     "objects": [
@@ -36,6 +37,9 @@
                 "name": "${APPLICATION_NAME}",
                 "labels": {
                     "app": "${APPLICATION_NAME}"
+                },
+                "annotations": {
+                    "description": "Exposes and load balances the application pods"
                 }
             },
             "spec": {
@@ -62,6 +66,9 @@
                 "name": "${APPLICATION_NAME}",
                 "labels": {
                     "app": "${APPLICATION_NAME}"
+                },
+                "annotations": {
+                    "description": "Defines how to build the application"
                 }
             },
             "spec": {
@@ -119,6 +126,9 @@
                 "name": "${APPLICATION_NAME}",
                 "labels": {
                     "app": "${APPLICATION_NAME}"
+                },
+                "annotations": {
+                    "description": "Defines how to deploy the application server"
                 }
             },
             "spec": {
@@ -239,13 +249,14 @@
         },
         {
             "name": "GIT_URI",
-            "description": "URL of the Git Repository",
+            "description": "The URL of the repository with your application source code.",
             "displayName": "Git URI",
-            "required": true
+            "required": true,
+            "value": "https://github.com/openshift-s2i/s2i-aspnet-example.git"
         },
         {
             "name": "GIT_REF",
-            "description": "Git Branch",
+            "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch.",
             "displayName": "Git Branch",
             "value": "master"
         },
@@ -255,8 +266,8 @@
             "displayName": "Git Context Directory"
         },
         {
-           "description": "Custom hostname.  Leave blank for default hostname, e.g.: <application-name>.<project>.<default-domain-suffix>",
            "name": "APPLICATION_HOSTNAME",
+           "description": "The exposed hostname that will route to the Node.js service, if left blank a value will be defaulted.",
            "displayName": "Application hostname"
         },
         {
