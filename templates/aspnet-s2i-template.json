@@ -191,7 +191,11 @@
                                     "port": 8080
                                     }
                                 },
-                                "resources": {},
+                                "resources": {
+                                    "limits": {
+                                      "memory": "${MEMORY_LIMIT}"
+                                    }
+                                },
                                 "terminationMessagePath": "/dev/termination-log",
                                 "imagePullPolicy": "Always"
                             }
@@ -221,6 +225,12 @@
     ],
     "parameters": [
         {
+            "name": "MEMORY_LIMIT",
+            "displayName": "Memory Limit",
+            "description": "Maximum amount of memory the .NET Core container can use.",
+            "value": "512Mi",
+            "required": true
+        },{
             "name": "APPLICATION_NAME",
             "description": "Application Name",
             "value": "aspnet-app",
