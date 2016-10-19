@@ -263,7 +263,8 @@
         {
             "name": "GIT_CONTEXT_DIR",
             "description": "Path within Git project to build; empty for root project directory.",
-            "displayName": "Git Context Directory"
+            "displayName": "Git Context Directory",
+            "value": "app"
         },
         {
            "name": "APPLICATION_HOSTNAME",
